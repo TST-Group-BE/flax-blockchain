@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.ints import uint8, uint64
-from flax.util.streamable import Streamable, streamable
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.util.ints import uint8, uint64
+from tst.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

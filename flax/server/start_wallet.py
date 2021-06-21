@@ -2,20 +2,20 @@ import pathlib
 from multiprocessing import freeze_support
 from typing import Dict
 
-from flax.consensus.constants import ConsensusConstants
-from flax.consensus.default_constants import DEFAULT_CONSTANTS
-from flax.rpc.wallet_rpc_api import WalletRpcApi
-from flax.server.outbound_message import NodeType
-from flax.server.start_service import run_service
-from flax.types.peer_info import PeerInfo
-from flax.util.block_tools import test_constants
-from flax.util.config import load_config_cli, load_config
-from flax.util.default_root import DEFAULT_ROOT_PATH
-from flax.util.keychain import Keychain
-from flax.wallet.wallet_node import WalletNode
+from tst.consensus.constants import ConsensusConstants
+from tst.consensus.default_constants import DEFAULT_CONSTANTS
+from tst.rpc.wallet_rpc_api import WalletRpcApi
+from tst.server.outbound_message import NodeType
+from tst.server.start_service import run_service
+from tst.types.peer_info import PeerInfo
+from tst.util.block_tools import test_constants
+from tst.util.config import load_config_cli, load_config
+from tst.util.default_root import DEFAULT_ROOT_PATH
+from tst.util.keychain import Keychain
+from tst.wallet.wallet_node import WalletNode
 
 # See: https://bugs.python.org/issue29288
-from flax.wallet.wallet_node_api import WalletNodeAPI
+from tst.wallet.wallet_node_api import WalletNodeAPI
 
 "".encode("idna")
 

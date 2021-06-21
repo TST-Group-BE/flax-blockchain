@@ -4,13 +4,13 @@ from typing import Optional, Tuple, List, Union
 from clvm import SExp
 from clvm_tools import binutils
 
-from flax.full_node.generator import create_compressed_generator
-from flax.types.blockchain_format.program import SerializedProgram, Program
-from flax.types.coin_solution import CoinSolution
-from flax.types.generator_types import BlockGenerator, CompressorArg
-from flax.types.spend_bundle import SpendBundle
-from flax.util.byte_types import hexstr_to_bytes
-from flax.util.ints import uint32, uint64
+from tst.full_node.generator import create_compressed_generator
+from tst.types.blockchain_format.program import SerializedProgram, Program
+from tst.types.coin_solution import CoinSolution
+from tst.types.generator_types import BlockGenerator, CompressorArg
+from tst.types.spend_bundle import SpendBundle
+from tst.util.byte_types import hexstr_to_bytes
+from tst.util.ints import uint32, uint64
 
 
 def spend_bundle_to_serialized_coin_solution_entry_list(bundle: SpendBundle) -> bytes:

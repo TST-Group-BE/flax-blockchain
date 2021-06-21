@@ -12,50 +12,50 @@ from blspy import AugSchemeMPL, G1Element, PrivateKey
 from chiabip158 import PyBIP158
 from cryptography.fernet import Fernet
 
-from flax import __version__
-from flax.consensus.block_record import BlockRecord
-from flax.consensus.coinbase import pool_parent_id, farmer_parent_id
-from flax.consensus.constants import ConsensusConstants
-from flax.consensus.find_fork_point import find_fork_point_in_chain
-from flax.full_node.weight_proof import WeightProofHandler
-from flax.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import Program
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.full_block import FullBlock
-from flax.types.header_block import HeaderBlock
-from flax.types.mempool_inclusion_status import MempoolInclusionStatus
-from flax.util.byte_types import hexstr_to_bytes
-from flax.util.db_wrapper import DBWrapper
-from flax.util.errors import Err
-from flax.util.hash import std_hash
-from flax.util.ints import uint32, uint64, uint128
-from flax.wallet.block_record import HeaderBlockRecord
-from flax.wallet.cc_wallet.cc_wallet import CCWallet
-from flax.wallet.derivation_record import DerivationRecord
-from flax.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
-from flax.wallet.key_val_store import KeyValStore
-from flax.wallet.rl_wallet.rl_wallet import RLWallet
-from flax.wallet.settings.user_settings import UserSettings
-from flax.wallet.trade_manager import TradeManager
-from flax.wallet.transaction_record import TransactionRecord
-from flax.wallet.util.backup_utils import open_backup_file
-from flax.wallet.util.transaction_type import TransactionType
-from flax.wallet.util.wallet_types import WalletType
-from flax.wallet.wallet import Wallet
-from flax.wallet.wallet_action import WalletAction
-from flax.wallet.wallet_action_store import WalletActionStore
-from flax.wallet.wallet_block_store import WalletBlockStore
-from flax.wallet.wallet_blockchain import WalletBlockchain
-from flax.wallet.wallet_coin_record import WalletCoinRecord
-from flax.wallet.wallet_coin_store import WalletCoinStore
-from flax.wallet.wallet_info import WalletInfo, WalletInfoBackup
-from flax.wallet.wallet_puzzle_store import WalletPuzzleStore
-from flax.wallet.wallet_sync_store import WalletSyncStore
-from flax.wallet.wallet_transaction_store import WalletTransactionStore
-from flax.wallet.wallet_user_store import WalletUserStore
-from flax.server.server import FlaxServer
-from flax.wallet.did_wallet.did_wallet import DIDWallet
+from tst import __version__
+from tst.consensus.block_record import BlockRecord
+from tst.consensus.coinbase import pool_parent_id, farmer_parent_id
+from tst.consensus.constants import ConsensusConstants
+from tst.consensus.find_fork_point import find_fork_point_in_chain
+from tst.full_node.weight_proof import WeightProofHandler
+from tst.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzleSolution
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import Program
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.full_block import FullBlock
+from tst.types.header_block import HeaderBlock
+from tst.types.mempool_inclusion_status import MempoolInclusionStatus
+from tst.util.byte_types import hexstr_to_bytes
+from tst.util.db_wrapper import DBWrapper
+from tst.util.errors import Err
+from tst.util.hash import std_hash
+from tst.util.ints import uint32, uint64, uint128
+from tst.wallet.block_record import HeaderBlockRecord
+from tst.wallet.cc_wallet.cc_wallet import CCWallet
+from tst.wallet.derivation_record import DerivationRecord
+from tst.wallet.derive_keys import master_sk_to_backup_sk, master_sk_to_wallet_sk
+from tst.wallet.key_val_store import KeyValStore
+from tst.wallet.rl_wallet.rl_wallet import RLWallet
+from tst.wallet.settings.user_settings import UserSettings
+from tst.wallet.trade_manager import TradeManager
+from tst.wallet.transaction_record import TransactionRecord
+from tst.wallet.util.backup_utils import open_backup_file
+from tst.wallet.util.transaction_type import TransactionType
+from tst.wallet.util.wallet_types import WalletType
+from tst.wallet.wallet import Wallet
+from tst.wallet.wallet_action import WalletAction
+from tst.wallet.wallet_action_store import WalletActionStore
+from tst.wallet.wallet_block_store import WalletBlockStore
+from tst.wallet.wallet_blockchain import WalletBlockchain
+from tst.wallet.wallet_coin_record import WalletCoinRecord
+from tst.wallet.wallet_coin_store import WalletCoinStore
+from tst.wallet.wallet_info import WalletInfo, WalletInfoBackup
+from tst.wallet.wallet_puzzle_store import WalletPuzzleStore
+from tst.wallet.wallet_sync_store import WalletSyncStore
+from tst.wallet.wallet_transaction_store import WalletTransactionStore
+from tst.wallet.wallet_user_store import WalletUserStore
+from tst.server.server import TstServer
+from tst.wallet.did_wallet.did_wallet import DIDWallet
 
 
 class WalletStateManager:
@@ -99,7 +99,7 @@ class WalletStateManager:
     coin_store: WalletCoinStore
     sync_store: WalletSyncStore
     weight_proof_handler: Any
-    server: FlaxServer
+    server: TstServer
 
     @staticmethod
     async def create(
@@ -107,7 +107,7 @@ class WalletStateManager:
         config: Dict,
         db_path: Path,
         constants: ConsensusConstants,
-        server: FlaxServer,
+        server: TstServer,
         name: str = None,
     ):
         self = WalletStateManager()

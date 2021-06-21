@@ -6,28 +6,28 @@ from typing import Dict, Optional, List, Any, Set, Tuple, Union
 
 from blspy import AugSchemeMPL, G1Element
 from secrets import token_bytes
-from flax.protocols import wallet_protocol
-from flax.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
-from flax.server.outbound_message import NodeType
-from flax.types.blockchain_format.coin import Coin
-from flax.types.coin_solution import CoinSolution
+from tst.protocols import wallet_protocol
+from tst.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
+from tst.server.outbound_message import NodeType
+from tst.types.blockchain_format.coin import Coin
+from tst.types.coin_solution import CoinSolution
 
-from flax.types.blockchain_format.program import Program
-from flax.types.spend_bundle import SpendBundle
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.wallet.util.transaction_type import TransactionType
-from flax.util.ints import uint64, uint32, uint8
+from tst.types.blockchain_format.program import Program
+from tst.types.spend_bundle import SpendBundle
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.wallet.util.transaction_type import TransactionType
+from tst.util.ints import uint64, uint32, uint8
 
-from flax.wallet.did_wallet.did_info import DIDInfo
-from flax.wallet.cc_wallet.ccparent import CCParent
-from flax.wallet.transaction_record import TransactionRecord
-from flax.wallet.util.wallet_types import WalletType
-from flax.wallet.wallet import Wallet
-from flax.wallet.wallet_coin_record import WalletCoinRecord
-from flax.wallet.wallet_info import WalletInfo
-from flax.wallet.derivation_record import DerivationRecord
-from flax.wallet.did_wallet import did_wallet_puzzles
-from flax.wallet.derive_keys import master_sk_to_wallet_sk
+from tst.wallet.did_wallet.did_info import DIDInfo
+from tst.wallet.cc_wallet.ccparent import CCParent
+from tst.wallet.transaction_record import TransactionRecord
+from tst.wallet.util.wallet_types import WalletType
+from tst.wallet.wallet import Wallet
+from tst.wallet.wallet_coin_record import WalletCoinRecord
+from tst.wallet.wallet_info import WalletInfo
+from tst.wallet.derivation_record import DerivationRecord
+from tst.wallet.did_wallet import did_wallet_puzzles
+from tst.wallet.derive_keys import master_sk_to_wallet_sk
 
 
 class DIDWallet:

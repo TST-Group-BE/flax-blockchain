@@ -2,27 +2,27 @@ from typing import Dict, List, Optional
 
 from blspy import AugSchemeMPL, G2Element, PrivateKey
 
-from flax.consensus.constants import ConsensusConstants
-from flax.util.hash import std_hash
-from flax.types.announcement import Announcement
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import Program
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.coin_solution import CoinSolution
-from flax.types.condition_opcodes import ConditionOpcode
-from flax.types.condition_with_args import ConditionWithArgs
-from flax.types.spend_bundle import SpendBundle
-from flax.util.clvm import int_from_bytes, int_to_bytes
-from flax.util.condition_tools import conditions_by_opcode, conditions_for_solution, pkm_pairs_for_conditions_dict
-from flax.util.ints import uint32, uint64
-from flax.wallet.derive_keys import master_sk_to_wallet_sk
-from flax.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from tst.consensus.constants import ConsensusConstants
+from tst.util.hash import std_hash
+from tst.types.announcement import Announcement
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import Program
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.coin_solution import CoinSolution
+from tst.types.condition_opcodes import ConditionOpcode
+from tst.types.condition_with_args import ConditionWithArgs
+from tst.types.spend_bundle import SpendBundle
+from tst.util.clvm import int_from_bytes, int_to_bytes
+from tst.util.condition_tools import conditions_by_opcode, conditions_for_solution, pkm_pairs_for_conditions_dict
+from tst.util.ints import uint32, uint64
+from tst.wallet.derive_keys import master_sk_to_wallet_sk
+from tst.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
     calculate_synthetic_secret_key,
     puzzle_for_pk,
     solution_for_conditions,
 )
-from flax.wallet.puzzles.puzzle_utils import (
+from tst.wallet.puzzles.puzzle_utils import (
     make_assert_aggsig_condition,
     make_assert_coin_announcement,
     make_assert_puzzle_announcement,

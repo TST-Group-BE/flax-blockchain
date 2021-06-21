@@ -3,15 +3,15 @@ from typing import List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G2Element
 
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import Program, INFINITE_COST
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.condition_opcodes import ConditionOpcode
-from flax.types.spend_bundle import CoinSolution, SpendBundle
-from flax.util.condition_tools import conditions_dict_for_solution
-from flax.util.ints import uint64
-from flax.wallet.puzzles.cc_loader import CC_MOD, LOCK_INNER_PUZZLE
-from flax.wallet.puzzles.genesis_by_coin_id_with_0 import (
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import Program, INFINITE_COST
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.condition_opcodes import ConditionOpcode
+from tst.types.spend_bundle import CoinSolution, SpendBundle
+from tst.util.condition_tools import conditions_dict_for_solution
+from tst.util.ints import uint64
+from tst.wallet.puzzles.cc_loader import CC_MOD, LOCK_INNER_PUZZLE
+from tst.wallet.puzzles.genesis_by_coin_id_with_0 import (
     genesis_coin_id_for_genesis_coin_checker,
     lineage_proof_for_coin,
     lineage_proof_for_genesis,

@@ -1,16 +1,16 @@
 import pathlib
 from typing import Dict
 
-from flax.consensus.constants import ConsensusConstants
-from flax.consensus.default_constants import DEFAULT_CONSTANTS
-from flax.harvester.harvester import Harvester
-from flax.harvester.harvester_api import HarvesterAPI
-from flax.rpc.harvester_rpc_api import HarvesterRpcApi
-from flax.server.outbound_message import NodeType
-from flax.server.start_service import run_service
-from flax.types.peer_info import PeerInfo
-from flax.util.config import load_config_cli
-from flax.util.default_root import DEFAULT_ROOT_PATH
+from tst.consensus.constants import ConsensusConstants
+from tst.consensus.default_constants import DEFAULT_CONSTANTS
+from tst.harvester.harvester import Harvester
+from tst.harvester.harvester_api import HarvesterAPI
+from tst.rpc.harvester_rpc_api import HarvesterRpcApi
+from tst.server.outbound_message import NodeType
+from tst.server.start_service import run_service
+from tst.types.peer_info import PeerInfo
+from tst.util.config import load_config_cli
+from tst.util.default_root import DEFAULT_ROOT_PATH
 
 # See: https://bugs.python.org/issue29288
 "".encode("idna")

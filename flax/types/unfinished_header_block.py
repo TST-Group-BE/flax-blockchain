@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from flax.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock
-from flax.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
-from flax.types.blockchain_format.vdf import VDFProof
-from flax.types.end_of_slot_bundle import EndOfSubSlotBundle
-from flax.util.streamable import Streamable, streamable
+from tst.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock
+from tst.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
+from tst.types.blockchain_format.vdf import VDFProof
+from tst.types.end_of_slot_bundle import EndOfSubSlotBundle
+from tst.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

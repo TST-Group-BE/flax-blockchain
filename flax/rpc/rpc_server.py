@@ -7,13 +7,13 @@ from typing import Any, Callable, Dict, List, Optional
 
 import aiohttp
 
-from flax.server.outbound_message import NodeType
-from flax.server.server import ssl_context_for_server
-from flax.types.peer_info import PeerInfo
-from flax.util.byte_types import hexstr_to_bytes
-from flax.util.ints import uint16
-from flax.util.json_util import dict_to_json_str, obj_to_response
-from flax.util.ws_message import create_payload, create_payload_dict, format_response, pong
+from tst.server.outbound_message import NodeType
+from tst.server.server import ssl_context_for_server
+from tst.types.peer_info import PeerInfo
+from tst.util.byte_types import hexstr_to_bytes
+from tst.util.ints import uint16
+from tst.util.json_util import dict_to_json_str, obj_to_response
+from tst.util.ws_message import create_payload, create_payload_dict, format_response, pong
 
 log = logging.getLogger(__name__)
 

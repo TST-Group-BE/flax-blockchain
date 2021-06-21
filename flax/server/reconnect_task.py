@@ -1,11 +1,11 @@
 import asyncio
 import socket
 
-from flax.server.server import FlaxServer
-from flax.types.peer_info import PeerInfo
+from tst.server.server import TstServer
+from tst.types.peer_info import PeerInfo
 
 
-def start_reconnect_task(server: FlaxServer, peer_info_arg: PeerInfo, log, auth: bool):
+def start_reconnect_task(server: TstServer, peer_info_arg: PeerInfo, log, auth: bool):
     """
     Start a background task that checks connection and reconnects periodically to a peer.
     """

@@ -1,14 +1,14 @@
 from typing import Callable, Dict, List
 
-from flax.farmer.farmer import Farmer
-from flax.util.byte_types import hexstr_to_bytes
-from flax.util.ws_message import WsRpcMessage, create_payload_dict
+from tst.farmer.farmer import Farmer
+from tst.util.byte_types import hexstr_to_bytes
+from tst.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class FarmerRpcApi:
     def __init__(self, farmer: Farmer):
         self.service = farmer
-        self.service_name = "flax_farmer"
+        self.service_name = "tst_farmer"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {

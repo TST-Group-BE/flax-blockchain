@@ -5,15 +5,15 @@ import logging
 import pytest
 from aiohttp import ClientSession, ClientTimeout, ServerDisconnectedError, WSCloseCode, WSMessage, WSMsgType
 
-from flax.full_node.full_node_api import FullNodeAPI
-from flax.protocols import full_node_protocol
-from flax.protocols.protocol_message_types import ProtocolMessageTypes
-from flax.server.outbound_message import make_msg
-from flax.server.rate_limits import RateLimiter
-from flax.server.server import ssl_context_for_client
-from flax.server.ws_connection import WSFlaxConnection
-from flax.types.peer_info import PeerInfo
-from flax.util.ints import uint16, uint64
+from tst.full_node.full_node_api import FullNodeAPI
+from tst.protocols import full_node_protocol
+from tst.protocols.protocol_message_types import ProtocolMessageTypes
+from tst.server.outbound_message import make_msg
+from tst.server.rate_limits import RateLimiter
+from tst.server.server import ssl_context_for_client
+from tst.server.ws_connection import WSTstConnection
+from tst.types.peer_info import PeerInfo
+from tst.util.ints import uint16, uint64
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 
@@ -60,7 +60,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.flax_ca_crt_path, server_2.flax_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.tst_ca_crt_path, server_2.tst_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -109,7 +109,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.flax_ca_crt_path, server_2.flax_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.tst_ca_crt_path, server_2.tst_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -153,8 +153,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSFlaxConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSFlaxConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSTstConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSTstConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -206,8 +206,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSFlaxConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSFlaxConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSTstConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSTstConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -255,8 +255,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSFlaxConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSFlaxConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSTstConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSTstConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"

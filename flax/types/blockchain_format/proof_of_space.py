@@ -6,11 +6,11 @@ from bitstring import BitArray
 from blspy import G1Element
 from chiapos import Verifier
 
-from flax.consensus.constants import ConsensusConstants
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.hash import std_hash
-from flax.util.ints import uint8
-from flax.util.streamable import Streamable, streamable
+from tst.consensus.constants import ConsensusConstants
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.util.hash import std_hash
+from tst.util.ints import uint8
+from tst.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

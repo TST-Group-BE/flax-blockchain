@@ -3,18 +3,18 @@ import time
 
 import pytest
 
-from flax.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from flax.consensus.blockchain import ReceiveBlockResult
-from flax.protocols import full_node_protocol, wallet_protocol
-from flax.protocols.protocol_message_types import ProtocolMessageTypes
-from flax.server.outbound_message import Message
-from flax.simulator.full_node_simulator import FullNodeSimulator
-from flax.simulator.simulator_protocol import FarmNewBlockProtocol
-from flax.types.mempool_inclusion_status import MempoolInclusionStatus
-from flax.types.peer_info import PeerInfo
-from flax.util.errors import Err
-from flax.util.ints import uint16, uint32
-from flax.wallet.transaction_record import TransactionRecord
+from tst.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from tst.consensus.blockchain import ReceiveBlockResult
+from tst.protocols import full_node_protocol, wallet_protocol
+from tst.protocols.protocol_message_types import ProtocolMessageTypes
+from tst.server.outbound_message import Message
+from tst.simulator.full_node_simulator import FullNodeSimulator
+from tst.simulator.simulator_protocol import FarmNewBlockProtocol
+from tst.types.mempool_inclusion_status import MempoolInclusionStatus
+from tst.types.peer_info import PeerInfo
+from tst.util.errors import Err
+from tst.util.ints import uint16, uint32
+from tst.wallet.transaction_record import TransactionRecord
 from tests.core.full_node.test_full_node import add_dummy_connection
 from tests.setup_nodes import bt, self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert

@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-from flax.util.ints import uint8, uint32
-from flax.util.streamable import Streamable, streamable
+from tst.util.ints import uint8, uint32
+from tst.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

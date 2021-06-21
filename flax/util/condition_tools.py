@@ -2,15 +2,15 @@ from typing import Dict, List, Optional, Tuple, Set
 
 from blspy import G1Element
 
-from flax.types.announcement import Announcement
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import Program, SerializedProgram
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.condition_opcodes import ConditionOpcode
-from flax.types.condition_with_args import ConditionWithArgs
-from flax.util.clvm import int_from_bytes
-from flax.util.errors import ConsensusError, Err
-from flax.util.ints import uint64
+from tst.types.announcement import Announcement
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import Program, SerializedProgram
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.condition_opcodes import ConditionOpcode
+from tst.types.condition_with_args import ConditionWithArgs
+from tst.util.clvm import int_from_bytes
+from tst.util.errors import ConsensusError, Err
+from tst.util.ints import uint64
 
 # TODO: review each `assert` and consider replacing with explicit checks
 #       since asserts can be stripped with python `-OO` flag
@@ -20,7 +20,7 @@ def parse_sexp_to_condition(
     sexp: Program,
 ) -> Tuple[Optional[Err], Optional[ConditionWithArgs]]:
     """
-    Takes a FlaxLisp sexp and returns a ConditionWithArgs.
+    Takes a TstLisp sexp and returns a ConditionWithArgs.
     If it fails, returns an Error
     """
     as_atoms = sexp.as_atom_list()
@@ -40,7 +40,7 @@ def parse_sexp_to_conditions(
     sexp: Program,
 ) -> Tuple[Optional[Err], Optional[List[ConditionWithArgs]]]:
     """
-    Takes a FlaxLisp sexp (list) and returns the list of ConditionWithArgss
+    Takes a TstLisp sexp (list) and returns the list of ConditionWithArgss
     If it fails, returns as Error
     """
     results: List[ConditionWithArgs] = []

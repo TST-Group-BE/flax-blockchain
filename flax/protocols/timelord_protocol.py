@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from flax.types.blockchain_format.foliage import Foliage
-from flax.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from flax.types.blockchain_format.vdf import VDFInfo, VDFProof
-from flax.types.end_of_slot_bundle import EndOfSubSlotBundle
-from flax.util.ints import uint8, uint32, uint64, uint128
-from flax.util.streamable import Streamable, streamable
+from tst.types.blockchain_format.foliage import Foliage
+from tst.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from tst.types.blockchain_format.vdf import VDFInfo, VDFProof
+from tst.types.end_of_slot_bundle import EndOfSubSlotBundle
+from tst.util.ints import uint8, uint32, uint64, uint128
+from tst.util.streamable import Streamable, streamable
 
 """
 Protocol between timelord and full node.

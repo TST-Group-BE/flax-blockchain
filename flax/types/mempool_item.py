@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import List
 
-from flax.consensus.cost_calculator import NPCResult
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import SerializedProgram
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.spend_bundle import SpendBundle
-from flax.util.ints import uint64
-from flax.util.streamable import Streamable, streamable
+from tst.consensus.cost_calculator import NPCResult
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import SerializedProgram
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.spend_bundle import SpendBundle
+from tst.util.ints import uint64
+from tst.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

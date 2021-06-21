@@ -3,9 +3,9 @@ from typing import Callable, List, Optional
 import blspy
 from blspy import AugSchemeMPL, PrivateKey
 
-from flax.types.coin_solution import CoinSolution
-from flax.types.spend_bundle import SpendBundle
-from flax.util.condition_tools import conditions_dict_for_solution, pkm_pairs_for_conditions_dict
+from tst.types.coin_solution import CoinSolution
+from tst.types.spend_bundle import SpendBundle
+from tst.util.condition_tools import conditions_dict_for_solution, pkm_pairs_for_conditions_dict
 
 
 async def sign_coin_solutions(

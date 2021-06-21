@@ -5,11 +5,11 @@ from typing import List, Optional, Set, Tuple
 import aiosqlite
 from blspy import G1Element
 
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.db_wrapper import DBWrapper
-from flax.util.ints import uint32
-from flax.wallet.derivation_record import DerivationRecord
-from flax.wallet.util.wallet_types import WalletType
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.util.db_wrapper import DBWrapper
+from tst.util.ints import uint32
+from tst.wallet.derivation_record import DerivationRecord
+from tst.wallet.util.wallet_types import WalletType
 
 log = logging.getLogger(__name__)
 

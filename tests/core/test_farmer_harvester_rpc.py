@@ -4,21 +4,21 @@ import pytest
 from blspy import AugSchemeMPL
 from chiapos import DiskPlotter
 
-from flax.consensus.coinbase import create_puzzlehash_for_pk
-from flax.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
-from flax.protocols import farmer_protocol
-from flax.rpc.farmer_rpc_api import FarmerRpcApi
-from flax.rpc.farmer_rpc_client import FarmerRpcClient
-from flax.rpc.harvester_rpc_api import HarvesterRpcApi
-from flax.rpc.harvester_rpc_client import HarvesterRpcClient
-from flax.rpc.rpc_server import start_rpc_server
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
-from flax.util.block_tools import get_plot_dir
-from flax.util.config import load_config
-from flax.util.hash import std_hash
-from flax.util.ints import uint8, uint16, uint32, uint64
-from flax.wallet.derive_keys import master_sk_to_wallet_sk
+from tst.consensus.coinbase import create_puzzlehash_for_pk
+from tst.plotting.plot_tools import stream_plot_info_ph, stream_plot_info_pk
+from tst.protocols import farmer_protocol
+from tst.rpc.farmer_rpc_api import FarmerRpcApi
+from tst.rpc.farmer_rpc_client import FarmerRpcClient
+from tst.rpc.harvester_rpc_api import HarvesterRpcApi
+from tst.rpc.harvester_rpc_client import HarvesterRpcClient
+from tst.rpc.rpc_server import start_rpc_server
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from tst.util.block_tools import get_plot_dir
+from tst.util.config import load_config
+from tst.util.hash import std_hash
+from tst.util.ints import uint8, uint16, uint32, uint64
+from tst.wallet.derive_keys import master_sk_to_wallet_sk
 from tests.setup_nodes import bt, self_hostname, setup_farmer_harvester, test_constants
 from tests.time_out_assert import time_out_assert
 

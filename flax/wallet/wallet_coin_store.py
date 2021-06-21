@@ -3,12 +3,12 @@ from typing import Dict, List, Optional, Set
 import aiosqlite
 import sqlite3
 
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.db_wrapper import DBWrapper
-from flax.util.ints import uint32, uint64
-from flax.wallet.util.wallet_types import WalletType
-from flax.wallet.wallet_coin_record import WalletCoinRecord
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.util.db_wrapper import DBWrapper
+from tst.util.ints import uint32, uint64
+from tst.wallet.util.wallet_types import WalletType
+from tst.wallet.wallet_coin_record import WalletCoinRecord
 
 
 class WalletCoinStore:

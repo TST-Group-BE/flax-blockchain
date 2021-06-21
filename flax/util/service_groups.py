@@ -1,19 +1,19 @@
 from typing import KeysView, Generator
 
 SERVICES_FOR_GROUP = {
-    "all": "flax_harvester flax_timelord_launcher flax_timelord flax_farmer flax_full_node flax_wallet".split(),
-    "node": "flax_full_node".split(),
-    "harvester": "flax_harvester".split(),
-    "farmer": "flax_harvester flax_farmer flax_full_node flax_wallet".split(),
-    "farmer-no-wallet": "flax_harvester flax_farmer flax_full_node".split(),
-    "farmer-only": "flax_farmer".split(),
-    "timelord": "flax_timelord_launcher flax_timelord flax_full_node".split(),
-    "timelord-only": "flax_timelord".split(),
-    "timelord-launcher-only": "flax_timelord_launcher".split(),
-    "wallet": "flax_wallet flax_full_node".split(),
-    "wallet-only": "flax_wallet".split(),
-    "introducer": "flax_introducer".split(),
-    "simulator": "flax_full_node_simulator".split(),
+    "all": "tst_harvester tst_timelord_launcher tst_timelord tst_farmer tst_full_node tst_wallet".split(),
+    "node": "tst_full_node".split(),
+    "harvester": "tst_harvester".split(),
+    "farmer": "tst_harvester tst_farmer tst_full_node tst_wallet".split(),
+    "farmer-no-wallet": "tst_harvester tst_farmer tst_full_node".split(),
+    "farmer-only": "tst_farmer".split(),
+    "timelord": "tst_timelord_launcher tst_timelord tst_full_node".split(),
+    "timelord-only": "tst_timelord".split(),
+    "timelord-launcher-only": "tst_timelord_launcher".split(),
+    "wallet": "tst_wallet tst_full_node".split(),
+    "wallet-only": "tst_wallet".split(),
+    "introducer": "tst_introducer".split(),
+    "simulator": "tst_full_node_simulator".split(),
 }
 
 

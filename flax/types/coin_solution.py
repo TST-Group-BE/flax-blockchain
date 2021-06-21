@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import List
 
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import SerializedProgram, INFINITE_COST
-from flax.util.chain_utils import additions_for_solution
-from flax.util.streamable import Streamable, streamable
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import SerializedProgram, INFINITE_COST
+from tst.util.chain_utils import additions_for_solution
+from tst.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

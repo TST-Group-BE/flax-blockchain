@@ -1,6 +1,6 @@
-[submodule "flax-blockchain-gui"]
-	path = flax-blockchain-gui
-	url = https://github.com/Flax-Network/flax-blockchain-gui.git
+[submodule "tst-blockchain-gui"]
+	path = tst-blockchain-gui
+	url = https://github.com/Tst-Network/tst-blockchain-gui.git
 	branch = main
 [submodule "mozilla-ca"]
 	path = mozilla-ca

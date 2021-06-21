@@ -1,8 +1,8 @@
 from typing import Any, Dict
 
-from flax.wallet.key_val_store import KeyValStore
-from flax.wallet.settings.default_settings import default_settings
-from flax.wallet.settings.settings_objects import BackupInitialized
+from tst.wallet.key_val_store import KeyValStore
+from tst.wallet.settings.default_settings import default_settings
+from tst.wallet.settings.settings_objects import BackupInitialized
 
 
 class UserSettings:

@@ -2,13 +2,13 @@ from typing import List
 
 from blspy import AugSchemeMPL, G1Element, G2Element
 
-from flax.consensus.coinbase import create_puzzlehash_for_pk
-from flax.util.bech32m import encode_puzzle_hash
-from flax.util.config import load_config
-from flax.util.default_root import DEFAULT_ROOT_PATH
-from flax.util.ints import uint32
-from flax.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic
-from flax.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
+from tst.consensus.coinbase import create_puzzlehash_for_pk
+from tst.util.bech32m import encode_puzzle_hash
+from tst.util.config import load_config
+from tst.util.default_root import DEFAULT_ROOT_PATH
+from tst.util.ints import uint32
+from tst.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic
+from tst.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
 
 keychain: Keychain = Keychain()
 
@@ -21,7 +21,7 @@ def generate_and_print():
     mnemonic = generate_mnemonic()
     print("Generating private key. Mnemonic (24 secret words):")
     print(mnemonic)
-    print("Note that this key has not been added to the keychain. Run flax keys add")
+    print("Note that this key has not been added to the keychain. Run tst keys add")
     return mnemonic
 
 

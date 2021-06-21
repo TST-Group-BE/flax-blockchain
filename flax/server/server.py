@@ -15,17 +15,17 @@ from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes, serialization
 
-from flax.protocols.protocol_message_types import ProtocolMessageTypes
-from flax.protocols.shared_protocol import protocol_version
-from flax.server.introducer_peers import IntroducerPeers
-from flax.server.outbound_message import Message, NodeType
-from flax.server.ssl_context import private_ssl_paths, public_ssl_paths
-from flax.server.ws_connection import WSFlaxConnection
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.peer_info import PeerInfo
-from flax.util.errors import Err, ProtocolError
-from flax.util.ints import uint16
-from flax.util.network import is_localhost, is_in_network
+from tst.protocols.protocol_message_types import ProtocolMessageTypes
+from tst.protocols.shared_protocol import protocol_version
+from tst.server.introducer_peers import IntroducerPeers
+from tst.server.outbound_message import Message, NodeType
+from tst.server.ssl_context import private_ssl_paths, public_ssl_paths
+from tst.server.ws_connection import WSTstConnection
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.peer_info import PeerInfo
+from tst.util.errors import Err, ProtocolError
+from tst.util.ints import uint16
+from tst.util.network import is_localhost, is_in_network
 
 
 def ssl_context_for_server(
@@ -58,7 +58,7 @@ def ssl_context_for_client(
     return ssl_context
 
 
-class FlaxServer:
+class TstServer:
     def __init__(
         self,
         port: int,
@@ -72,16 +72,16 @@ class FlaxServer:
         root_path: Path,
         config: Dict,
         private_ca_crt_key: Tuple[Path, Path],
-        flax_ca_crt_key: Tuple[Path, Path],
+        tst_ca_crt_key: Tuple[Path, Path],
         name: str = None,
         introducer_peers: Optional[IntroducerPeers] = None,
     ):
         # Keeps track of all connections to and from this node.
         logging.basicConfig(level=logging.DEBUG)
-        self.all_connections: Dict[bytes32, WSFlaxConnection] = {}
+        self.all_connections: Dict[bytes32, WSTstConnection] = {}
         self.tasks: Set[asyncio.Task] = set()
 
-        self.connection_by_type: Dict[NodeType, Dict[bytes32, WSFlaxConnection]] = {
+        self.connection_by_type: Dict[NodeType, Dict[bytes32, WSTstConnection]] = {
             NodeType.FULL_NODE: {},
             NodeType.WALLET: {},
             NodeType.HARVESTER: {},
@@ -125,7 +125,7 @@ class FlaxServer:
         else:
             self.p2p_crt_path, self.p2p_key_path = None, None
         self.ca_private_crt_path, self.ca_private_key_path = private_ca_crt_key
-        self.flax_ca_crt_path, self.flax_ca_key_path = flax_ca_crt_key
+        self.tst_ca_crt_path, self.tst_ca_key_path = tst_ca_crt_key
         self.node_id = self.my_id()
 
         self.incoming_task = asyncio.create_task(self.incoming_api_task())
@@ -169,7 +169,7 @@ class FlaxServer:
         """
         while True:
             await asyncio.sleep(600)
-            to_remove: List[WSFlaxConnection] = []
+            to_remove: List[WSTstConnection] = []
             for connection in self.all_connections.values():
                 if self._local_type == NodeType.FULL_NODE and connection.connection_type == NodeType.FULL_NODE:
                     if time.time() - connection.last_message_time > 1800:
@@ -206,7 +206,7 @@ class FlaxServer:
         else:
             self.p2p_crt_path, self.p2p_key_path = public_ssl_paths(self.root_path, self.config)
             ssl_context = ssl_context_for_server(
-                self.flax_ca_crt_path, self.flax_ca_key_path, self.p2p_crt_path, self.p2p_key_path
+                self.tst_ca_crt_path, self.tst_ca_key_path, self.p2p_crt_path, self.p2p_key_path
             )
 
         self.site = web.TCPSite(
@@ -230,9 +230,9 @@ class FlaxServer:
         peer_id = bytes32(der_cert.fingerprint(hashes.SHA256()))
         if peer_id == self.node_id:
             return ws
-        connection: Optional[WSFlaxConnection] = None
+        connection: Optional[WSTstConnection] = None
         try:
-            connection = WSFlaxConnection(
+            connection = WSTstConnection(
                 self._local_type,
                 ws,
                 self._port,
@@ -291,7 +291,7 @@ class FlaxServer:
         await close_event.wait()
         return ws
 
-    async def connection_added(self, connection: WSFlaxConnection, on_connect=None):
+    async def connection_added(self, connection: WSTstConnection, on_connect=None):
         # If we already had a connection to this peer_id, close the old one. This is secure because peer_ids are based
         # on TLS public keys
         if connection.peer_node_id in self.all_connections:
@@ -340,10 +340,10 @@ class FlaxServer:
             )
         else:
             ssl_context = ssl_context_for_client(
-                self.flax_ca_crt_path, self.flax_ca_key_path, self.p2p_crt_path, self.p2p_key_path
+                self.tst_ca_crt_path, self.tst_ca_key_path, self.p2p_crt_path, self.p2p_key_path
             )
         session = None
-        connection: Optional[WSFlaxConnection] = None
+        connection: Optional[WSTstConnection] = None
         try:
             timeout = ClientTimeout(total=30)
             session = ClientSession(timeout=timeout)
@@ -377,7 +377,7 @@ class FlaxServer:
                 if peer_id == self.node_id:
                     raise RuntimeError(f"Trying to connect to a peer ({target_node}) with the same peer_id: {peer_id}")
 
-                connection = WSFlaxConnection(
+                connection = WSTstConnection(
                     self._local_type,
                     ws,
                     self._port,
@@ -435,7 +435,7 @@ class FlaxServer:
 
         return False
 
-    def connection_closed(self, connection: WSFlaxConnection, ban_time: int):
+    def connection_closed(self, connection: WSTstConnection, ban_time: int):
         if is_localhost(connection.peer_host) and ban_time != 0:
             self.log.warning(f"Trying to ban localhost for {ban_time}, but will not ban")
             ban_time = 0
@@ -484,7 +484,7 @@ class FlaxServer:
             if payload_inc is None or connection_inc is None:
                 continue
 
-            async def api_call(full_message: Message, connection: WSFlaxConnection, task_id):
+            async def api_call(full_message: Message, connection: WSTstConnection, task_id):
                 start_time = time.time()
                 try:
                     if self.received_message_callback is not None:
@@ -571,7 +571,7 @@ class FlaxServer:
         self,
         messages: List[Message],
         node_type: NodeType,
-        origin_peer: WSFlaxConnection,
+        origin_peer: WSTstConnection,
     ):
         for node_id, connection in self.all_connections.items():
             if node_id == origin_peer.peer_node_id:
@@ -598,7 +598,7 @@ class FlaxServer:
             for message in messages:
                 await connection.send_message(message)
 
-    def get_outgoing_connections(self) -> List[WSFlaxConnection]:
+    def get_outgoing_connections(self) -> List[WSTstConnection]:
         result = []
         for _, connection in self.all_connections.items():
             if connection.is_outbound:
@@ -606,7 +606,7 @@ class FlaxServer:
 
         return result
 
-    def get_full_node_outgoing_connections(self) -> List[WSFlaxConnection]:
+    def get_full_node_outgoing_connections(self) -> List[WSTstConnection]:
         result = []
         connections = self.get_full_node_connections()
         for connection in connections:
@@ -614,10 +614,10 @@ class FlaxServer:
                 result.append(connection)
         return result
 
-    def get_full_node_connections(self) -> List[WSFlaxConnection]:
+    def get_full_node_connections(self) -> List[WSTstConnection]:
         return list(self.connection_by_type[NodeType.FULL_NODE].values())
 
-    def get_connections(self) -> List[WSFlaxConnection]:
+    def get_connections(self) -> List[WSTstConnection]:
         result = []
         for _, connection in self.all_connections.items():
             result.append(connection)
@@ -689,7 +689,7 @@ class FlaxServer:
             return inbound_count < self.config["max_inbound_timelord"]
         return True
 
-    def is_trusted_peer(self, peer: WSFlaxConnection, trusted_peers: Dict) -> bool:
+    def is_trusted_peer(self, peer: WSTstConnection, trusted_peers: Dict) -> bool:
         if trusted_peers is None:
             return False
         for trusted_peer in trusted_peers:

@@ -1,9 +1,9 @@
 from typing import Optional
 
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import Program
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.wallet.puzzles.load_clvm import load_clvm
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import Program
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.wallet.puzzles.load_clvm import load_clvm
 
 MOD = load_clvm("genesis-by-coin-id-with-0.clvm", package_or_requirement=__name__)
 

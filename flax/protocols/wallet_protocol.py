@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import Program
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.header_block import HeaderBlock
-from flax.types.spend_bundle import SpendBundle
-from flax.util.ints import uint8, uint32, uint128
-from flax.util.streamable import Streamable, streamable
+from tst.types.blockchain_format.coin import Coin
+from tst.types.blockchain_format.program import Program
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.types.header_block import HeaderBlock
+from tst.types.spend_bundle import SpendBundle
+from tst.util.ints import uint8, uint32, uint128
+from tst.util.streamable import Streamable, streamable
 
 """
 Protocol between wallet (SPV node) and full node.

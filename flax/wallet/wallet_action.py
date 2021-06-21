@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from flax.util.ints import uint32
-from flax.wallet.util.wallet_types import WalletType
+from tst.util.ints import uint32
+from tst.wallet.util.wallet_types import WalletType
 
 
 @dataclass(frozen=True)

@@ -6,11 +6,11 @@ from typing import Any, Dict, Optional
 
 import websockets
 
-from flax.server.server import ssl_context_for_client
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.config import load_config
-from flax.util.json_util import dict_to_json_str
-from flax.util.ws_message import WsRpcMessage, create_payload_dict
+from tst.server.server import ssl_context_for_client
+from tst.types.blockchain_format.sized_bytes import bytes32
+from tst.util.config import load_config
+from tst.util.json_util import dict_to_json_str
+from tst.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class DaemonProxy:
