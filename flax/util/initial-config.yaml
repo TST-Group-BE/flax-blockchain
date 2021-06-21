@@ -54,14 +54,14 @@ logging: &logging
 
 harvester:
   # The harvester server (if run) will run on this port
-  port: 6884
+  port: 7884
   farmer_peer:
     host: *self_hostname
-    port: 6885
+    port: 7885
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6760
+  rpc_port: 7760
   num_threads: 30
   plot_loading_frequency_seconds: 120
 
@@ -94,14 +94,14 @@ pool:
 
 farmer:
   # The farmer server (if run) will run on this port
-  port: 6885
+  port: 7885
   # The farmer will attempt to connect to this full node and harvester
   full_node_peer:
     host: *self_hostname
-    port: 6888
+    port: 7888
   harvester_peer:
     host: *self_hostname
-    port: 6884
+    port: 7884
 
   pool_public_keys: []
 
@@ -110,7 +110,7 @@ farmer:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6759
+  rpc_port: 7759
 
   # To send a share to a pool, a proof of space must have required_iters less than this number
   pool_share_threshold: 1000
@@ -135,7 +135,7 @@ timelord_launcher:
 
 timelord:
   # The timelord server (if run) will run on this port
-  port: 6886
+  port: 7886
   # Provides a list of VDF clients expected to connect to this timelord.
   # For each client, an IP is provided, together with the estimated iterations per second.
   vdf_clients:
@@ -147,7 +147,7 @@ timelord:
       - 150000
   full_node_peer:
       host: *self_hostname
-      port: 6888
+      port: 7888
   # Maximum number of seconds allowed for a client to reconnect to the server.
   max_connection_time: 60
   # The ip and port where the TCP clients will connect.
@@ -182,7 +182,7 @@ timelord:
 
 full_node:
   # The full node server (if run) will run on this port
-  port: 6888
+  port: 7888
 
   # Run multiple nodes with different databases by changing the database_path
   database_path: db/blockchain_v1_CHALLENGE.sqlite
@@ -240,13 +240,13 @@ full_node:
     - "dns-introducer.flaxnetwork.org"
   farmer_peer:
       host: *self_hostname
-      port: 6885
+      port: 7885
   timelord_peer:
       host: *self_hostname
-      port: 6886
+      port: 7886
   introducer_peer:
       host: introducer.flaxnetwork.org  # Flax AWS introducer IPv4/IPv6
-      port: 6888
+      port: 7888
   wallet_peer:
     host: *self_hostname
     port: 6883
@@ -310,7 +310,7 @@ wallet:
 
   full_node_peer:
     host: *self_hostname
-    port: 6888
+    port: 7888
 
   testing: False
   database_path: wallet/db/blockchain_wallet_v1_CHALLENGE_KEY.sqlite
@@ -328,7 +328,7 @@ wallet:
 
   introducer_peer:
     host: introducer.flaxnetwork.org # Flax AWS introducer IPv4/IPv6
-    port: 6888
+    port: 7888
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
