@@ -1,5 +1,11 @@
-# flax-blockchain
+# TST
 
-**Flax** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community-supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.
+**Chia meets storj !**
 
-For more information, see our website and downloads at https://flaxnetwork.org.
+- description of the project
+
+- technical document about being rewarded for storage and empty space
+
+- greenpaper about the economics
+
+- MVP version of TST
