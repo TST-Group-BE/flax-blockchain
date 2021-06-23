@@ -1,6 +1,6 @@
 # Github actions template config.
 oses = ["ubuntu"]
-root_test_dirs = ["installer", "blockchain", "clvm", "core", "generator", "simulation", "wallet"]
+root_test_dirs = ["generator"]
 
 # Defaults are conservative.
 parallel = False
