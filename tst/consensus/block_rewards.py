@@ -14,8 +14,14 @@ def calculate_pool_reward(height: uint32) -> uint64:
     rates increase continuously.
     """
 
+    """
+    Cooldown period first 50k blocks to allow development of storage nodes
+    """
+
     if height == 0:
-        return uint64(int((7 / 8) * 300000 * _mojo_per_tst))
+        return uint64(int((7 / 8) * 300 * _mojo_per_tst))
+    elif height <= 50000:
+        return uint64(int((7 / 8) * 0 * _mojo_per_tst))
     elif height < 3 * _blocks_per_year:
         return uint64(int((7 / 8) * 2 * _mojo_per_tst))
     elif height < 6 * _blocks_per_year:
